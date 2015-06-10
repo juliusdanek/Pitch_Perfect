@@ -12,7 +12,6 @@ import AVFoundation
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBOutlet weak var RecordingLabel: UILabel!
-    @IBOutlet weak var StopButton: UIButton!
     @IBOutlet weak var RecordingButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
@@ -29,9 +28,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func RecordAudio(sender: UIButton) {
-        StopButton.hidden = false
         RecordingLabel.text = "recording"
-        RecordingButton.enabled = false
+//        RecordingButton.enabled = false
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
         let recordingName = "my_audio.wav"
@@ -79,9 +77,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        StopButton.hidden = true
         RecordingButton.enabled = true
-        RecordingLabel.text = "Tap Mic To Record"
+        RecordingLabel.text = "Press and hold mic to record"
     }
 
 }
