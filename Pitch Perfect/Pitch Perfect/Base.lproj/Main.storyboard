@@ -42,15 +42,29 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5h-Zz-t6b">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.21568627450980393" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Pause Recording">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseRecording:" destination="vXZ-lx-hvc" eventType="touchDown" id="Hv5-Zi-9TN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="s49-LS-Ob1" secondAttribute="centerY" id="1K3-Mv-4ew"/>
                             <constraint firstAttribute="centerX" secondItem="s49-LS-Ob1" secondAttribute="centerX" id="51Z-yR-QJx"/>
                             <constraint firstAttribute="centerX" secondItem="dDy-Eb-vtV" secondAttribute="centerX" id="di8-q3-IdW"/>
+                            <constraint firstItem="oFe-zv-qDc" firstAttribute="top" secondItem="j5h-Zz-t6b" secondAttribute="bottom" constant="23" id="gEh-RB-HvF"/>
                             <constraint firstItem="dDy-Eb-vtV" firstAttribute="top" secondItem="s49-LS-Ob1" secondAttribute="bottom" constant="21" id="hVV-xM-qER">
                                 <variation key="widthClass=compact" constant="71"/>
                             </constraint>
+                            <constraint firstAttribute="centerX" secondItem="j5h-Zz-t6b" secondAttribute="centerX" id="hoi-jl-wNv"/>
+                            <constraint firstItem="j5h-Zz-t6b" firstAttribute="leading" secondItem="oFe-zv-qDc" secondAttribute="trailing" constant="-93" id="mUA-bR-6vQ"/>
                             <constraint firstAttribute="centerX" secondItem="oFe-zv-qDc" secondAttribute="centerX" id="mrT-BN-svf"/>
                             <constraint firstItem="dDy-Eb-vtV" firstAttribute="centerX" secondItem="s49-LS-Ob1" secondAttribute="centerX" id="ptz-eK-g8s"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oFe-zv-qDc" secondAttribute="bottom" constant="20" id="tmh-V3-Hgd"/>
@@ -60,15 +74,19 @@
                                 <exclude reference="s49-LS-Ob1"/>
                                 <exclude reference="oFe-zv-qDc"/>
                                 <exclude reference="dDy-Eb-vtV"/>
+                                <exclude reference="j5h-Zz-t6b"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="tmh-V3-Hgd"/>
+                                <exclude reference="1K3-Mv-4ew"/>
+                                <exclude reference="51Z-yR-QJx"/>
                                 <exclude reference="di8-q3-IdW"/>
                                 <exclude reference="hVV-xM-qER"/>
                                 <exclude reference="ptz-eK-g8s"/>
+                                <exclude reference="hoi-jl-wNv"/>
+                                <exclude reference="mUA-bR-6vQ"/>
+                                <exclude reference="gEh-RB-HvF"/>
                                 <exclude reference="mrT-BN-svf"/>
-                                <exclude reference="1K3-Mv-4ew"/>
-                                <exclude reference="51Z-yR-QJx"/>
+                                <exclude reference="tmh-V3-Hgd"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -76,15 +94,19 @@
                                 <include reference="s49-LS-Ob1"/>
                                 <include reference="oFe-zv-qDc"/>
                                 <include reference="dDy-Eb-vtV"/>
+                                <include reference="j5h-Zz-t6b"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="tmh-V3-Hgd"/>
+                                <include reference="1K3-Mv-4ew"/>
+                                <include reference="51Z-yR-QJx"/>
                                 <include reference="di8-q3-IdW"/>
                                 <include reference="hVV-xM-qER"/>
                                 <include reference="ptz-eK-g8s"/>
+                                <include reference="hoi-jl-wNv"/>
+                                <exclude reference="mUA-bR-6vQ"/>
+                                <include reference="gEh-RB-HvF"/>
                                 <include reference="mrT-BN-svf"/>
-                                <include reference="1K3-Mv-4ew"/>
-                                <include reference="51Z-yR-QJx"/>
+                                <include reference="tmh-V3-Hgd"/>
                             </mask>
                         </variation>
                     </view>
@@ -93,6 +115,7 @@
                         <outlet property="RecordingButton" destination="s49-LS-Ob1" id="l43-FY-kXK"/>
                         <outlet property="RecordingLabel" destination="dDy-Eb-vtV" id="FGp-sB-fdo"/>
                         <outlet property="StopButton" destination="oFe-zv-qDc" id="fLi-5L-Lbf"/>
+                        <outlet property="pauseButton" destination="j5h-Zz-t6b" id="PkZ-hV-xNi"/>
                         <segue destination="G3h-ex-2js" kind="show" identifier="stopRecording" id="cD6-cG-FiV"/>
                     </connections>
                 </viewController>

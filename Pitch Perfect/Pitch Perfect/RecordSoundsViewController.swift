@@ -14,6 +14,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var RecordingLabel: UILabel!
     @IBOutlet weak var StopButton: UIButton!
     @IBOutlet weak var RecordingButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
@@ -29,6 +30,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func RecordAudio(sender: UIButton) {
+        pauseButton.hidden = false
         StopButton.hidden = false
         RecordingLabel.text = "recording"
         RecordingButton.enabled = false
@@ -47,6 +49,23 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.record()
     }
+    
+    @IBAction func pauseRecording(sender: UIButton) {
+        println("start click")
+        if (pauseButton.titleLabel?.text == "Pause Recording") {
+            audioRecorder.pause()
+            pauseButton.setTitle("Resume Recording", forState: nil)
+            RecordingLabel.text = "recording paused"
+            println("Pause")
+        } else if (pauseButton.titleLabel!.text == "Resume Recording") {
+            audioRecorder.record()
+            pauseButton.setTitle("Pause Recording", forState: nil)
+            RecordingLabel.text = "recording"
+            println("resume")
+        }
+        println("end click")
+    }
+
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if(flag) {
@@ -82,6 +101,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         StopButton.hidden = true
         RecordingButton.enabled = true
         RecordingLabel.text = "Tap Mic To Record"
+        pauseButton.hidden = true
     }
 
 }
