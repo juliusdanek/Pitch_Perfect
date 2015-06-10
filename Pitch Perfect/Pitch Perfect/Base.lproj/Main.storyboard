@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rJp-aT-Vu4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -61,13 +62,13 @@
                                 <exclude reference="dDy-Eb-vtV"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1K3-Mv-4ew"/>
-                                <exclude reference="51Z-yR-QJx"/>
+                                <exclude reference="tmh-V3-Hgd"/>
                                 <exclude reference="di8-q3-IdW"/>
                                 <exclude reference="hVV-xM-qER"/>
                                 <exclude reference="ptz-eK-g8s"/>
                                 <exclude reference="mrT-BN-svf"/>
-                                <exclude reference="tmh-V3-Hgd"/>
+                                <exclude reference="1K3-Mv-4ew"/>
+                                <exclude reference="51Z-yR-QJx"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -77,13 +78,13 @@
                                 <include reference="dDy-Eb-vtV"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1K3-Mv-4ew"/>
-                                <include reference="51Z-yR-QJx"/>
+                                <include reference="tmh-V3-Hgd"/>
                                 <include reference="di8-q3-IdW"/>
                                 <include reference="hVV-xM-qER"/>
                                 <include reference="ptz-eK-g8s"/>
                                 <include reference="mrT-BN-svf"/>
-                                <include reference="tmh-V3-Hgd"/>
+                                <include reference="1K3-Mv-4ew"/>
+                                <include reference="51Z-yR-QJx"/>
                             </mask>
                         </variation>
                     </view>
@@ -108,6 +109,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TBz-Gd-l30"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rCF-YN-pnc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKi-EX-Luc">
@@ -156,18 +158,38 @@
                                     <action selector="playChipmunkAudio:" destination="G3h-ex-2js" eventType="touchUpInside" id="DbB-Q8-ex7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFJ-VB-JTz">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="ECHO">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="echoSound:" destination="G3h-ex-2js" eventType="touchUpInside" id="ik0-JV-JXf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="EFJ-VB-JTz" secondAttribute="centerX" id="4ok-HW-xjS">
+                                <variation key="widthClass=compact" constant="-1"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="2nl-mv-K4z" secondAttribute="centerX" id="4zB-j0-rcc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zbH-ov-Nfu" secondAttribute="trailing" constant="25" id="6KZ-bt-5gD"/>
                             <constraint firstItem="bbp-jY-vyp" firstAttribute="top" secondItem="svf-gn-nkj" secondAttribute="bottom" constant="35" id="8Xq-4q-RPF"/>
+                            <constraint firstItem="bbp-jY-vyp" firstAttribute="leading" secondItem="EFJ-VB-JTz" secondAttribute="trailing" constant="33" id="Ad9-d8-S7K"/>
                             <constraint firstItem="TBz-Gd-l30" firstAttribute="top" secondItem="2nl-mv-K4z" secondAttribute="bottom" constant="20" id="Ibc-lD-PkB"/>
+                            <constraint firstItem="EFJ-VB-JTz" firstAttribute="top" secondItem="svf-gn-nkj" secondAttribute="bottom" constant="168" id="QhC-Zj-uhc"/>
+                            <constraint firstItem="2nl-mv-K4z" firstAttribute="top" secondItem="EFJ-VB-JTz" secondAttribute="bottom" constant="63" id="VhB-qb-UYV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bbp-jY-vyp" secondAttribute="trailing" constant="25" id="YRs-7R-djS"/>
                             <constraint firstItem="9l8-1V-uqf" firstAttribute="leading" secondItem="rCF-YN-pnc" secondAttribute="leadingMargin" constant="25" id="am8-JQ-mHk"/>
                             <constraint firstItem="9l8-1V-uqf" firstAttribute="top" secondItem="vKi-EX-Luc" secondAttribute="bottom" constant="100" id="fE8-Ls-pH9"/>
                             <constraint firstItem="zbH-ov-Nfu" firstAttribute="top" secondItem="bbp-jY-vyp" secondAttribute="bottom" constant="100" id="fSU-2V-Xll"/>
                             <constraint firstItem="vKi-EX-Luc" firstAttribute="leading" secondItem="rCF-YN-pnc" secondAttribute="leadingMargin" constant="25" id="jwG-IH-frh"/>
+                            <constraint firstItem="EFJ-VB-JTz" firstAttribute="leading" secondItem="vKi-EX-Luc" secondAttribute="trailing" constant="33" id="sSE-iD-70a">
+                                <variation key="widthClass=compact" constant="34"/>
+                            </constraint>
                             <constraint firstItem="vKi-EX-Luc" firstAttribute="top" secondItem="svf-gn-nkj" secondAttribute="bottom" constant="35" id="xKV-g3-epg"/>
                         </constraints>
                         <variation key="default">
@@ -177,17 +199,23 @@
                                 <exclude reference="2nl-mv-K4z"/>
                                 <exclude reference="9l8-1V-uqf"/>
                                 <exclude reference="zbH-ov-Nfu"/>
+                                <exclude reference="EFJ-VB-JTz"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="jwG-IH-frh"/>
                                 <exclude reference="xKV-g3-epg"/>
                                 <exclude reference="8Xq-4q-RPF"/>
+                                <exclude reference="Ad9-d8-S7K"/>
                                 <exclude reference="YRs-7R-djS"/>
                                 <exclude reference="am8-JQ-mHk"/>
                                 <exclude reference="fE8-Ls-pH9"/>
                                 <exclude reference="6KZ-bt-5gD"/>
                                 <exclude reference="fSU-2V-Xll"/>
+                                <exclude reference="4ok-HW-xjS"/>
+                                <exclude reference="QhC-Zj-uhc"/>
+                                <exclude reference="sSE-iD-70a"/>
                                 <exclude reference="4zB-j0-rcc"/>
+                                <exclude reference="VhB-qb-UYV"/>
                                 <exclude reference="Ibc-lD-PkB"/>
                             </mask>
                         </variation>
@@ -198,17 +226,23 @@
                                 <include reference="2nl-mv-K4z"/>
                                 <include reference="9l8-1V-uqf"/>
                                 <include reference="zbH-ov-Nfu"/>
+                                <include reference="EFJ-VB-JTz"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="jwG-IH-frh"/>
                                 <include reference="xKV-g3-epg"/>
                                 <include reference="8Xq-4q-RPF"/>
+                                <exclude reference="Ad9-d8-S7K"/>
                                 <include reference="YRs-7R-djS"/>
                                 <include reference="am8-JQ-mHk"/>
                                 <include reference="fE8-Ls-pH9"/>
                                 <include reference="6KZ-bt-5gD"/>
                                 <include reference="fSU-2V-Xll"/>
+                                <include reference="4ok-HW-xjS"/>
+                                <exclude reference="QhC-Zj-uhc"/>
+                                <exclude reference="sSE-iD-70a"/>
                                 <include reference="4zB-j0-rcc"/>
+                                <include reference="VhB-qb-UYV"/>
                                 <include reference="Ibc-lD-PkB"/>
                             </mask>
                         </variation>

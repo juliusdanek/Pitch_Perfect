@@ -13,6 +13,7 @@ class PlaySoundViewController: UIViewController {
     
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
+    var audioEcho: AVAudioPlayer!
     
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
@@ -23,6 +24,7 @@ class PlaySoundViewController: UIViewController {
         audioPlayer.enableRate = true
         //Received audio gets accessed through the filePathUrl (couldn't we hardcode this and store it somewhere as a global variable?)
         // Do any additional setup after loading the view.
+        audioEcho = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
         
         audioEngine = AVAudioEngine()
         audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
@@ -33,10 +35,17 @@ class PlaySoundViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func audioPlay(playRate:Float) {
+    func audioPlay(playRate:Float, echo: Bool) {
         audioPlayer.stop()
+        audioEcho.stop()
+        audioPlayer.currentTime = 0
         audioPlayer.rate = playRate
         audioPlayer.play()
+        if (echo) {
+            audioEcho.currentTime = 0
+            audioEcho.volume = 0.8
+            audioEcho.playAtTime(audioEcho.deviceCurrentTime + NSTimeInterval(0.5))
+        }
     }
     
     func audioEngineReset (){
@@ -46,16 +55,18 @@ class PlaySoundViewController: UIViewController {
     
     @IBAction func SlowSound(sender: UIButton) {
         audioEngineReset()
-        audioPlay(0.5)
+        audioPlay(0.5, echo: false)
     }
 
     @IBAction func FastSound(sender: UIButton) {
         audioEngineReset()
-        audioPlay(2.0)
+        audioPlay(2.0, echo: false)
     }
     
     @IBAction func StopSound(sender: UIButton) {
         audioPlayer.stop()
+        audioEngineReset()
+        audioEcho.stop()
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
@@ -65,6 +76,10 @@ class PlaySoundViewController: UIViewController {
     
     @IBAction func playVader(sender: UIButton) {
         playAudioWithVariablePitch(-1000)
+    }
+    
+    @IBAction func echoSound(sender: UIButton) {
+        audioPlay(1.0, echo: true)
     }
     
     func playAudioWithVariablePitch(pitch: Float){
