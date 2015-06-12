@@ -47,10 +47,12 @@ class PlaySoundViewController: UIViewController {
             audioEcho.playAtTime(audioEcho.deviceCurrentTime + NSTimeInterval(0.5))
         }
     }
+    //function for audioplaying and stopping. resets audio everytime and sees whether the effect should be echoed or not.
     
     func audioEngineReset (){
         audioEngine.stop()
         audioEngine.reset()
+        //resets audio engine
     }
     
     @IBAction func SlowSound(sender: UIButton) {
@@ -89,18 +91,23 @@ class PlaySoundViewController: UIViewController {
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
+        //attach the node to audioEngine
         
         var changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
         audioEngine.attachNode(changePitchEffect)
+        //pitch effect added to audioEngine
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        //connecting the audioplaying to the effect and then to the output
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
+        //starts audioengine with the the file
         
         audioPlayerNode.play()
+        
     }
     
     

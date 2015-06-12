@@ -35,14 +35,17 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         RecordingLabel.text = "recording"
         RecordingButton.enabled = false
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        //assign directory path
         
         let recordingName = "my_audio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
+        //path for file, consisting of name of file and the path to the storing directory
         println(filePath)
         
         var session = AVAudioSession.sharedInstance()
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        //starting an audiosession for recording and playing
         
         audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
         audioRecorder.delegate = self
@@ -65,12 +68,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
         println("end click")
     }
+    //let's the recording play and pause dependent on the label text.
 
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if(flag) {
         
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
+            //if audiorecording has been processed successfully, segue can be performed.
             
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
             println("Recording successful")
@@ -85,6 +90,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if (segue.identifier == "stopRecording") {
             //This is why identifier is important, if the segue identifier fits the profile, data will get passed
             let playSoundsVC:PlaySoundViewController = segue.destinationViewController as! PlaySoundViewController
+            //allowing data to pass to next viewcontroller.
             let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
             // First we are accessing the destination VC and then we are creating a variable for our own data which then gets passed into the destination VCs variable. 
@@ -95,6 +101,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
         audioSession.setActive(false, error: nil)
+        //
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -102,6 +110,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         RecordingButton.enabled = true
         RecordingLabel.text = "Tap Mic To Record"
         pauseButton.hidden = true
+        //rearranging buttons so they appear as in the beginning
     }
 
 }
